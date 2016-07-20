@@ -64,23 +64,13 @@
             @Html.DisplayFor(modelItem => item.Details)
         </td>
         <td>
-           
-                        
-            @*<a href="@Url.ActionLink("Edit", "Edit", "item")">*@@*</a>*@ 
-            @*@Html.ActionLink("Edit", "Edit", new { id = item.ItemID })*@
-           
-                
-            @*@Html.ActionLink("Details", "Details", new { id = item.ItemID })*@ 
-            
-            @*@Html.ActionLink("Delete", "Delete", new { id=item.ItemID })*@
 
-            @Html.ActionLink("Edit", "Edit", new { id = item.ItemID })
-                <span class="glyphicon glyphicon-pencil"></span>|
-               
-                <span class="glyphicon glyphicon-zoom-in"></span>|
-                <span class="glyphicon glyphicon-remove"></span>
+        <td>
+            @Html.ActionLink(" ", "Edit", new { id = item.ListID }, new { @class = "glyphicon glyphicon-pencil", title = "Edit" })
+            @Html.ActionLink(" ", "Details", new { id = item.ListID }, new { @class = "glyphicon glyphicon-search", title = "Details" })
+            @Html.ActionLink(" ", "Delete", new { id = item.ListID }, new { @class = "glyphicon glyphicon-trash", title = "Delete" })
+        </td>
 
-</td>
     </tr>
 }
 
