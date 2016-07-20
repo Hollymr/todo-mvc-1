@@ -13,6 +13,17 @@
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.ListTitle)
+
+            @*<a href="@Url.Action("MarkAllDone", new { id=item.itemID })">
+                @if (list.IsDone)
+                {
+                    <span class="glyphicon glyphicon-check"></span>
+                }
+                else
+                {
+                    <span class="glyphicon glyphicon-unchecked"></span>
+                }*@
+            </a>
         </th>
         <th></th>
     </tr>

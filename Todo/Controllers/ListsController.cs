@@ -42,7 +42,7 @@ namespace Todo.Controllers
             return View();
         }
 
-        // POST: Lists/Create
+        // POST: Lists/Create //<--URL to get to lists create page 
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -74,7 +74,7 @@ namespace Todo.Controllers
             return View(list);
         }
 
-        // POST: Lists/Edit/5
+        // POST: Lists/Edit/5 //<-- URL to get to that page (5 is example)
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -90,31 +90,29 @@ namespace Todo.Controllers
             return View(list);
         }
 
-        //public ActionResult MarkAllDone(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    Item item = db.Items.Find(id);
-        //    if (item == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
+        // 
+        public ActionResult AllDone(int? id) //takes int id of the list 
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            List list = db.Lists.Find(id);
+            if (list == null)
+            {
+                return HttpNotFound();
+            }
 
-        //    if (item.IsDone)
-        //    {
-        //        item.IsDone = false;
-        //    }
-        //    else
-        //    {
-        //        item.IsDone = true;
-        //    }
+            foreach( var thinger in list.Items ) // individual items inside our list
+            {
+                //cross off each items
+                thinger.IsDone = true;
+            }
 
-        //    db.SaveChanges();
+            db.SaveChanges();
 
-        //    return RedirectToAction("Index");
-        //}
+            return RedirectToAction("Details", new { id = list.ListID });
+        }
 
 
 
