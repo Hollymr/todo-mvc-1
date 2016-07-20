@@ -100,7 +100,7 @@ namespace Todo.Controllers
             return View(item);
         }
 
-
+        // marks boxes when task completed 
         public ActionResult ToggleDone(int? id)
         {
             if (id == null)
@@ -126,6 +126,9 @@ namespace Todo.Controllers
 
             return RedirectToAction("Index");
         }
+
+      
+
 
 
         // GET: Items/Delete/5
